@@ -70,9 +70,9 @@ gr.Interface(
     fn=predict_retinopathy,
     inputs=gr.Image(type="pil"),
     outputs=[
-        gr.Image(type="pil", label="Grad-CAM"),
-        gr.Text(label="Prediction")
+        gr.Image(type="pil", label="Метод Grad-CAM"),
+        gr.Text(label="Вероятность ДР в %")
     ],
-    title="Diabetic Retinopathy Detection",
-    description="Upload a retinal image to classify DR and view Grad-CAM heatmap."
+    title="Диагностика диабетической ретинопатии",
+    description="Загрузите ОКТ .png и смотрите карту Grad-CAM heatmap"
 ).launch()
