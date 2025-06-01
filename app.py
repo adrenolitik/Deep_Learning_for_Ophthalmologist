@@ -74,5 +74,5 @@ gr.Interface(
         gr.Text(label="Вероятность ДР в %")
     ],
     title="Диагностика диабетической ретинопатии",
-    description="Загрузите ОКТ .png и смотрите карту Grad-CAM heatmap"
+    description="Загрузите ОКТ и смотрите ИИ-карту Grad-CAM heatmap"
 ).launch()
