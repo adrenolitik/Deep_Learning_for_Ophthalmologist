@@ -13,7 +13,8 @@ import datetime
 
 # Setup
 device = torch.device("cpu")
-save_dir = "/home/user/app/saved_predictions"
+# Create save directory in current working directory for cross-platform compatibility
+save_dir = os.path.join(os.getcwd(), "saved_predictions")
 if not os.path.exists(save_dir):
     os.makedirs(save_dir)
     print("📁 Folder created:", save_dir)
@@ -68,11 +69,14 @@ def predict_retinopathy(image):
 # Gradio app
 gr.Interface(
     fn=predict_retinopathy,
-    inputs=gr.Image(type="pil"),
+    inputs=gr.Image(type="pil", label="Upload OCT Image"),
     outputs=[
-        gr.Image(type="pil", label="Метод Grad-CAM"),
-        gr.Text(label="Вероятность ДР в %")
+        gr.Image(type="pil", label="Grad-CAM Heatmap"),
+        gr.Text(label="Diabetic Retinopathy Prediction")
     ],
-    title="Диагностика диабетической ретинопатии",
-    description="Загрузите ОКТ и смотрите ИИ-карту Grad-CAM heatmap"
-).launch()
+    title="AI Diabetic Retinopathy Detection",
+    description="Upload an OCT image to analyze for diabetic retinopathy. The AI will show a Grad-CAM heatmap highlighting areas of interest.",
+    examples=[
+        ["example_oct.jpg"] if os.path.exists("example_oct.jpg") else None
+    ]
+).launch(server_name="0.0.0.0", server_port=7860)

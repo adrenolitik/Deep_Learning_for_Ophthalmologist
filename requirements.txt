@@ -1,7 +1,8 @@
-torch
-torchvision
-pillow
-numpy
-gradio
-git+https://github.com/jacobgil/pytorch-grad-cam.git
+torch>=2.0.0
+torchvision>=0.15.0
+pillow>=9.0.0
+numpy>=1.26.0
+gradio>=4.0.0
+pytorch-grad-cam
+opencv-python>=4.8.0
 
