@@ -1,119 +1,119 @@
-# AI Diabetic Retinopathy Detection
+# Детекция диабетической ретинопатии с помощью ИИ
 
-An AI-powered application for detecting diabetic retinopathy (DR) from Optical Coherence Tomography (OCT) images using deep learning and Grad-CAM visualization.
+Приложение на базе ИИ для обнаружения диабетической ретинопатии (ДР) из изображений оптической когерентной томографии (ОКТ) с использованием глубокого обучения и визуализации Grad-CAM.
 
-## 🏥 What is Diabetic Retinopathy?
+## 🏥 Что такое диабетическая ретинопатия?
 
-Diabetic retinopathy is a diabetes complication that affects the eyes. It's caused by damage to the blood vessels of the light-sensitive tissue at the back of the eye (retina). Early detection is crucial for preventing vision loss.
+Диабетическая ретинопатия — это осложнение диабета, поражающее глаза. Она вызвана повреждением кровеносных сосудов светочувствительной ткани в задней части глаза (сетчатки). Раннее обнаружение критически важно для предотвращения потери зрения.
 
-## 🚀 Features
+## 🚀 Возможности
 
-- **AI Classification**: Uses a pre-trained ResNet-50 model to classify OCT images as DR (Diabetic Retinopathy) or NoDR (No Diabetic Retinopathy)
-- **Grad-CAM Visualization**: Shows which areas of the image the AI focuses on for diagnosis
-- **Confidence Scoring**: Provides probability scores for predictions
-- **Image Storage**: Automatically saves analyzed images with timestamps
-- **Web Interface**: User-friendly Gradio web interface
+- **Классификация ИИ**: Использует предобученную модель ResNet-50 для классификации изображений ОКТ как ДР (диабетическая ретинопатия) или NoDR (без диабетической ретинопатии)
+- **Визуализация Grad-CAM**: Показывает, на каких областях изображения фокусируется ИИ при диагностике
+- **Оценка уверенности**: Предоставляет вероятностные оценки для предсказаний
+- **Сохранение изображений**: Автоматически сохраняет проанализированные изображения с временными метками
+- **Веб-интерфейс**: Удобный веб-интерфейс на Gradio
 
-## 📋 Requirements
+## 📋 Требования
 
-- Python 3.8 or higher
+- Python 3.8 или выше
 - PyTorch 2.0+
-- CUDA-compatible GPU (optional, for faster inference)
+- CUDA-совместимый GPU (опционально, для ускорения инференса)
 
-## 🛠️ Installation
+## 🛠️ Установка
 
-1. **Clone or download this repository**
+1. **Клонируйте или скачайте этот репозиторий**
    ```bash
    git clone <repository-url>
    cd Deep_Learning_for_Ophthalmologist
    ```
 
-2. **Create a virtual environment (recommended)**
+2. **Создайте виртуальное окружение (рекомендуется)**
    ```bash
    python -m venv venv
    
-   # On Windows:
+   # В Windows:
    venv\Scripts\activate
    
-   # On macOS/Linux:
+   # В macOS/Linux:
    source venv/bin/activate
    ```
 
-3. **Install dependencies**
+3. **Установите зависимости**
    ```bash
    pip install -r requirements.txt
    ```
 
-## 🎯 Usage
+## 🎯 Использование
 
-1. **Start the application**
+1. **Запустите приложение**
    ```bash
    python app.py
    ```
 
-2. **Open your web browser** and navigate to the URL shown in the terminal (usually `http://127.0.0.1:7860`)
+2. **Откройте веб-браузер** и перейдите по адресу, показанному в терминале (обычно `http://127.0.0.1:7860`)
 
-3. **Upload an OCT image** by clicking the upload area or dragging and dropping an image file
+3. **Загрузите изображение ОКТ**, нажав на область загрузки или перетащив файл изображения
 
-4. **View results**:
-   - The AI will analyze the image and show the classification result
-   - A Grad-CAM heatmap will highlight areas of interest
-   - The prediction and confidence score will be displayed
-   - The analyzed image will be automatically saved to the `saved_predictions` folder
+4. **Просмотрите результаты**:
+   - ИИ проанализирует изображение и покажет результат классификации
+   - Тепловая карта Grad-CAM выделит области интереса
+   - Будет показано предсказание и оценка уверенности
+   - Проанализированное изображение автоматически сохранится в папку `saved_predictions`
 
-## 📁 File Structure
+## 📁 Структура файлов
 
 ```
 Deep_Learning_for_Ophthalmologist/
-├── app.py                          # Main application file
-├── requirements.txt                # Python dependencies
-├── resnet50_dr_classifier.pth     # Pre-trained model weights
-├── README.md                      # This file
-└── saved_predictions/             # Folder for saved analyzed images
+├── app.py                          # Основной файл приложения
+├── requirements.txt                # Python-зависимости
+├── resnet50_dr_classifier.pth     # Веса предобученной модели
+├── README.md                      # Этот файл
+└── saved_predictions/             # Папка для сохраненных проанализированных изображений
 ```
 
-## 🔬 How It Works
+## 🔬 Как это работает
 
-1. **Image Preprocessing**: OCT images are resized to 224x224 pixels and normalized
-2. **AI Analysis**: A ResNet-50 model processes the image to classify DR vs NoDR
-3. **Grad-CAM**: Generates a heatmap showing which image regions influenced the AI's decision
-4. **Results**: Displays classification, confidence score, and visual heatmap
+1. **Предобработка изображений**: Изображения ОКТ изменяют размер до 224x224 пикселей и нормализуются
+2. **Анализ ИИ**: Модель ResNet-50 обрабатывает изображение для классификации ДР против NoDR
+3. **Grad-CAM**: Генерирует тепловую карту, показывающую, какие области изображения повлияли на решение ИИ
+4. **Результаты**: Отображает классификацию, оценку уверенности и визуальную тепловую карту
 
-## 📊 Model Information
+## 📊 Информация о модели
 
-- **Architecture**: ResNet-50 with modified final layer for binary classification
-- **Training**: Pre-trained on OCT image dataset
-- **Classes**: 2 (DR - Diabetic Retinopathy, NoDR - No Diabetic Retinopathy)
-- **Input**: 224x224 RGB images
-- **Output**: Binary classification with confidence scores
+- **Архитектура**: ResNet-50 с измененным финальным слоем для бинарной классификации
+- **Обучение**: Предобучено на датасете изображений ОКТ
+- **Классы**: 2 (ДР - Диабетическая ретинопатия, NoDR - Без диабетической ретинопатии)
+- **Вход**: 224x224 RGB изображения
+- **Выход**: Бинарная классификация с оценками уверенности
 
-## ⚠️ Important Notes
+## ⚠️ Важные примечания
 
-- **Medical Disclaimer**: This tool is for research and educational purposes only. It should not be used for actual medical diagnosis without proper validation and clinical oversight.
-- **Image Quality**: For best results, use high-quality OCT images with good contrast and resolution
-- **Model Limitations**: The model's accuracy depends on the quality and characteristics of the training data
+- **Медицинский дисклеймер**: Этот инструмент предназначен только для исследовательских и образовательных целей. Он не должен использоваться для реальной медицинской диагностики без надлежащей валидации и клинического надзора.
+- **Качество изображений**: Для лучших результатов используйте высококачественные изображения ОКТ с хорошей контрастностью и разрешением
+- **Ограничения модели**: Точность модели зависит от качества и характеристик обучающих данных
 
-## 🐛 Troubleshooting
+## 🐛 Устранение неполадок
 
-- **CUDA errors**: The app runs on CPU by default. If you have GPU issues, ensure PyTorch is installed correctly
-- **Memory issues**: Large images may cause memory problems. The app automatically resizes images to 224x224
-- **Model loading errors**: Ensure `resnet50_dr_classifier.pth` is in the same directory as `app.py`
+- **Ошибки CUDA**: Приложение по умолчанию работает на CPU. Если есть проблемы с GPU, убедитесь, что PyTorch установлен корректно
+- **Проблемы с памятью**: Большие изображения могут вызывать проблемы с памятью. Приложение автоматически изменяет размер изображений до 224x224
+- **Ошибки загрузки модели**: Убедитесь, что `resnet50_dr_classifier.pth` находится в той же директории, что и `app.py`
 
-## 🤝 Contributing
+## 🤝 Вклад в проект
 
-Contributions are welcome! Please feel free to submit issues, feature requests, or pull requests.
+Вклады приветствуются! Не стесняйтесь отправлять issues, запросы функций или pull requests.
 
-## 📄 License
+## 📄 Лицензия
 
-This project is for educational and research purposes. Please ensure compliance with relevant regulations when using medical imaging data.
+Этот проект предназначен для образовательных и исследовательских целей. Пожалуйста, обеспечьте соблюдение соответствующих регуляций при использовании медицинских изображений.
 
-## 🔗 References
+## 🔗 Ссылки
 
 - [PyTorch](https://pytorch.org/)
 - [Gradio](https://gradio.app/)
 - [Grad-CAM](https://github.com/jacobgil/pytorch-grad-cam)
-- [ResNet Paper](https://arxiv.org/abs/1512.03385)
+- [Статья ResNet](https://arxiv.org/abs/1512.03385)
 
 ---
 
-**Note**: This application is designed for research and educational purposes in ophthalmology and medical AI. Always consult with qualified healthcare professionals for actual medical diagnosis and treatment decisions.
+**Примечание**: Это приложение разработано для исследовательских и образовательных целей в офтальмологии и медицинском ИИ. Всегда консультируйтесь с квалифицированными медицинскими специалистами для фактической медицинской диагностики и принятия решений о лечении.
